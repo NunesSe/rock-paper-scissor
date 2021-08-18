@@ -1,5 +1,5 @@
 function computerPlay() {
-    let possibleChoices = ["Rock", "Paper", "Scissor"]
+    let possibleChoices = ["rock", "paper", "scissor"]
     let computerChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
     return computerChoice;
 }
@@ -10,58 +10,27 @@ function capitalize(word) {
 }
 
 function playRound(playerChoice, computerChoice) {
-    playerChoiceLowerCase = playerChoice.toLowerCase();
-    computerChoiceLowerCase = computerChoice.toLowerCase();
-    if (playerChoiceLowerCase === computerChoiceLowerCase) {
+    if (playerChoice === computerChoice) {
         return("draw");
     }
-    /* player victory checker */
-    else if (playerChoiceLowerCase === "rock" && computerChoiceLowerCase === "scissor" || playerChoiceLowerCase === "paper" && computerChoiceLowerCase === "rock" || playerChoiceLowerCase === "scissor" && computerChoiceLowerCase === "paper") {
+    // player victory checker 
+    else if (playerChoice === "rock" && computerChoice === "scissor" || playerChoice === "paper" && computerChoice === "rock" || playerChoice === "scissor" && computerChoice === "paper") {
         return("player");   
     }
-    /* computer victory checker */
-    else if (computerChoiceLowerCase === "rock" && playerChoiceLowerCase === "scissor" || computerChoiceLowerCase === "paper" && playerChoiceLowerCase === "rock" || computerChoiceLowerCase === "scissor" && playerChoiceLowerCase === "paper") {
+    // computer victory checker 
+    else if (computerChoice === "rock" && playerChoice === "scissor" || computerChoice === "paper" && playerChoice === "rock" || computerChoice === "scissor" && playerChoice === "paper") {
         return("computer");   
     }
-    else {
-        return("error");
-    }
 }
 
 
-function game(times) {
-    let playerWins = 0;
-    let computerWins = 0;
-    let draws = 0;
-    let invalidInput = 0;
-    let i = 0;
-    while (i < times) {
-        let player = prompt("Rock, paper or scissor: ");
+const buttons = document.querySelectorAll("button");
+const results = document.querySelector(".player-score")
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        let player = e.target.value;
         let computer = computerPlay();
         let result = playRound(player, computer);
-        if (result === "draw") {
-            console.log(`It's a draw! ${capitalize(player)} is equal to ${capitalize(computer)}`);
-            draws++;
-        }
-        else if (result === "player") {
-            playerWins++;
-            console.log(`You won! ${capitalize(player)} beats ${capitalize(computer)}`);
-        }
-        else if (result === "computer") {
-            computerWins++;
-            console.log(`You lost! ${capitalize(computer)} beats ${capitalize(player)}`);
-        }
-        else if (result === "error") {
-            invalidInput++;
-            console.log("That is a invalid input!");
-        }
-        i++;
-    }
-    if (invalidInput >= 1) {
-        return `You won ${playerWins} times!\nYou lost ${computerWins} times!\nYou drew ${draws} times!\nAnd you had ${invalidInput} invalids inputs`
-    }
-    else {
-        return `You won ${playerWins} times!\nYou lost ${computerWins} times!\nYou drew ${draws} times!`
-    }
-}
-console.log(game(5));
+        
+    })
+})
