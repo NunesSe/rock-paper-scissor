@@ -1,1 +1,1 @@
-Simple rock paper scissors game played in the console.
+Rock paper scissors game with a simple UI.
