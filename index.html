@@ -7,22 +7,35 @@
 <body>
     <h1>Rock, Paper, Scissors</h1>
     <div class="buttons">
-        <button type="button" class="rock" value="rock">Rock</button>
-        <button type="button" class="paper" value="paper">Paper</button>
-        <button type="button" class="scissor" value="scissor">Scissor</button>
+        <button type="button" class="button" value="rock">Rock</button>
+        <button type="button" class="button" value="paper">Paper</button>
+        <button type="button" class="button" value="scissor">Scissor</button>
     </div>
     <div class=results-container>
         <div class="computer-score-container">
             COMPUTER SCORE
-            <p class="computer-score"></p>
+            <p class="computer-score">0</p>
         </div> 
         <div class="player-score-container">
             YOUR SCORE
-            <p class="player-score">3</p>
+            <p class="player-score">0</p>
         </div>
         <div class="draws-container">
             DRAWS
-            <p class="draws"></p>
+            <p class="draws">0</p>
+        </div>
+        <div class="five">
+            <p>FIRST TO FIVE WIN!</p>
+        </div>
+    </div>
+    <div class="black-bg">
+        <div class="pop-up">
+            <p id="result">
+              
+            </p>
+            <button id="play-again">
+                PLAY AGAIN!
+            </button>>
         </div>
     </div>
     <script src="myScript.js"></script>
