@@ -121,3 +121,17 @@ a {
     margin-top: 30px;
     margin-bottom: 0;
 }
+
+#play-again {
+    padding: 20px;
+    position: relative;
+    color: darkblue;
+    border-radius: 10%;
+    border: black, solid, 1px;
+}
+
+#play-again:hover {
+    cursor: pointer;
+    background-color: lightblue;
+    color: black;
+}

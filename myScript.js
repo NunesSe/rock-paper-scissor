@@ -4,11 +4,6 @@ function computerPlay() {
     return computerChoice;
 }
 
-function capitalize(word) {
-    let lower = word.toLowerCase();
-    return lower.charAt(0).toUpperCase() + lower.slice(1);
-}
-
 function playRound(playerChoice, computerChoice) {
     if (playerChoice === computerChoice) {
         return("draw");
@@ -24,7 +19,6 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function score(draws, playerScore, computerScore, winner) {
-    
     if (winner == "draw") {
         draws.innerText++;
     }
@@ -36,10 +30,10 @@ function score(draws, playerScore, computerScore, winner) {
     }
 }
 
-function showPopUp(playerScore, computerScore, result) {
-    if (playerScore.innerText == '1' || computerScore.innerText == '1') {
+function showPopUp(playerScore, computerScore, result, times) {
+    if (playerScore.innerText == times || computerScore.innerText == times) {
         document.querySelector(".black-bg").style.visibility = "visible";
-        if (playerScore.innerText == "1") {
+        if (playerScore.innerText == times) {
             result.innerText = "YOU WON!";
             result.classList.add("won");
         }
@@ -49,15 +43,28 @@ function showPopUp(playerScore, computerScore, result) {
         }
     }
 }
+
+function reset(playerScore, computerScore, draws) {
+    document.getElementById("play-again").addEventListener("click", () => {
+        playerScore.innerText = "0";
+        computerScore.innerText = "0";
+        draws.innerText = "0";
+        document.querySelector(".black-bg").style.visibility = "hidden";
+    })
+}
+
 function click(event) {
     let computer = computerPlay();
     let winner = playRound(event.target.value, computer);
+    let times = "5";
     const computerScore = document.querySelector(".computer-score");
     const playerScore = document.querySelector(".player-score");
     const draws = document.querySelector(".draws");
     const result = document.getElementById("result");
+    
     score(draws, playerScore, computerScore, winner);
-    showPopUp(playerScore, computerScore, result);
+    showPopUp(playerScore, computerScore, result, times);
+    reset(playerScore, computerScore, draws);
 }
 
 
