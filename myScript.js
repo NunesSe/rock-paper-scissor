@@ -44,12 +44,16 @@ function showPopUp(playerScore, computerScore, result, times) {
     }
 }
 
-function reset(playerScore, computerScore, draws) {
+function reset(playerScore, computerScore, draws, result) {
+    // remove classes
     document.getElementById("play-again").addEventListener("click", () => {
         playerScore.innerText = "0";
         computerScore.innerText = "0";
         draws.innerText = "0";
         document.querySelector(".black-bg").style.visibility = "hidden";
+        result.classList.remove("win");
+        result.classList.remove("lost");
+
     })
 }
 
@@ -64,7 +68,7 @@ function click(event) {
     
     score(draws, playerScore, computerScore, winner);
     showPopUp(playerScore, computerScore, result, times);
-    reset(playerScore, computerScore, draws);
+    reset(playerScore, computerScore, draws, result);
 }
 
 
